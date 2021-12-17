@@ -1,0 +1,31 @@
+version: '3.7'
+
+secrets:
+  id_rsa:
+    file:
+  id_rsa.pub:
+    file:
+  known_hosts:
+    file:
+
+services:
+
+#  web_server:
+#    ports:
+#      - 445:443
+
+  servicedb:
+    ports:
+      - "3311:3306"
+
+  php_gestore_utenti:
+    environment:
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
+      - AWS_VAULT=${AWS_VAULT}
+      - AWS_SQS_SHIVA_UTENTI_QUEUE=https://sqs.eu-west-1.amazonaws.com/250725797655/shiva-utenti-queue.fifo #Playground
+      - AWS_SNS_SHIVA_UTENTI_TOPIC=arn:aws:sns:eu-west-1:250725797655:shiva-utenti-topic.fifo #Playground
+      - DATABASE_URL=mysql://root:root@servicedb:3306/gestore_utenti?serverVersion=mariadb-10.3.22
+      - DATABASE_URL=mysql://root:root@servicedb:3307/gestore_utenti?serverVersion=mariadb-10.3.22

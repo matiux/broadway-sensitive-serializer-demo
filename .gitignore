@@ -1,0 +1,42 @@
+###> Docker ###
+docker/docker-compose.override.yml
+###< Docker ###
+
+###> Misc ###
+.idea
+Http/rest-client.private.env.json
+config/json
+.deptrac.cache
+###< Misc ###
+
+###> friendsofphp/php-cs-fixer ###
+.php_cs
+.php_cs.cache
+.php-cs-fixer.cache
+lsp
+###< friendsofphp/php-cs-fixer ###
+
+###> code coverage ###
+/public/coverage/
+.coverage
+#/public/coverage-clover.xml
+/public/coverage-badge.svg
+/public/*.svg
+###< code coverage ###
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+config/secrets/uat/uat.decrypt.private.php
+config/secrets/local
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+###> symfony/phpunit-bridge ###
+.phpunit
+tools/phpunit/.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
