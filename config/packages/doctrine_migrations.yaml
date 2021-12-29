@@ -1,0 +1,28 @@
+# @see https://symfony.com/doc/master/bundles/DoctrineMigrationsBundle/index.html#configuration
+doctrine_migrations:
+
+    # List of namespace/path pairs to search for migrations, at least one required
+    migrations_paths:
+        'App\Data\DoctrineMigrations': '%kernel.project_dir%/src/App/Data/DoctrineMigrations'
+
+    storage:
+        # Default (SQL table) metadata storage configuration
+        table_storage:
+            table_name: 'migration_versions'
+            version_column_name: 'version'
+            version_column_length: 1024
+            executed_at_column_name: 'executed_at'
+
+    em: default
+
+    # Possible values: "BY_YEAR", "BY_YEAR_AND_MONTH", false
+    organize_migrations: false
+
+    # Path to your custom migrations template
+    custom_template: ~
+
+    # Run all migrations in a transaction.
+    all_or_nothing: false
+
+    # Adds an extra check in the generated migrations to ensure that is executed on the same database type.
+    check_database_platform: true

@@ -4,7 +4,7 @@ WORKDIR=/var/www/app
 PROJECT_TOOL=$WORKDIR/scripts/project/bin/project
 PROJECT_NAME=$(basename "$(pwd)" | tr '[:upper:]' '[:lower:]')
 COMPOSE_OVERRIDE=
-PHP_CONTAINER=php_gestore_utenti
+PHP_CONTAINER=php_broadway_sensitive_serializer_demo
 
 if [[ -f "./docker/docker-compose.override.yml" ]]; then
   COMPOSE_OVERRIDE="--file ./docker/docker-compose.override.yml"

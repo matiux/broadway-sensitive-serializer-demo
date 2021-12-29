@@ -29,12 +29,11 @@ lsp
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
-config/secrets/uat/uat.decrypt.private.php
-config/secrets/local
 /public/bundles/
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
 ###> symfony/phpunit-bridge ###
 .phpunit
 tools/phpunit/.phpunit.result.cache

@@ -1,4 +1,2 @@
 alias sfcc="rm -Rf var/cache/*"
 alias sf="bin/console"
-export PATH=$PATH:/var/www/app/scripts/project/bin
-source /etc/bash_completion.d/project-autocomplete
