@@ -10,7 +10,8 @@ broadway:
 
     # service definition ids implementing Broadway\Serializer\Serializer
     serializer:
-        payload:   broadway.simple_interface_serializer
+        #payload:   broadway.simple_interface_serializer
+        payload: broadway_sensitive_serializer.serializer
         readmodel: broadway.simple_interface_serializer
         metadata:  broadway.simple_interface_serializer
 

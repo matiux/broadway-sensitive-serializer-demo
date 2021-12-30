@@ -4,11 +4,18 @@ declare(strict_types=1);
 
 namespace SensitiveUser\User\Domain\Event;
 
+use Psalm\Pure;
+use SensitiveUser\Shared\Domain\Event\BasicEvent;
 use SensitiveUser\Shared\Domain\ValueObject\DateTimeRFC;
 use SensitiveUser\User\Domain\Aggregate\UserId;
 
-class UserRegistered extends UserEvent
+/**
+ * @extends BasicEvent<UserId>
+ */
+class UserRegistered extends BasicEvent
 {
+    #[Pure]
+
     public function __construct(
         UserId $userId,
         public readonly string $name,
@@ -19,6 +26,7 @@ class UserRegistered extends UserEvent
         parent::__construct($userId, $occurredAt);
     }
 
+    #[Pure]
     public function serialize(): array
     {
         $serialized = [
@@ -30,10 +38,10 @@ class UserRegistered extends UserEvent
         return $this->basicSerialize() + $serialized;
     }
 
-    public static function deserialize(array $data)
+    public static function deserialize(array $data): UserRegistered
     {
         return new self(
-            UserId::createFrom((string) $data['user_id']),
+            UserId::createFrom((string) $data[self::AGGREGATE_ID_KEY]),
             (string) $data['name'],
             (string) $data['surname'],
             (string) $data['email'],

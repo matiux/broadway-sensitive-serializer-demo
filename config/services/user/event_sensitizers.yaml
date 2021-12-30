@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  SensitiveUser\User\Domain\EventSensitizer\UserRegisteredSensitizer:
+    parent: Matiux\Broadway\SensitiveSerializer\Serializer\Strategy\PayloadSensitizer
+    tags:
+      - { name: broadway.sensitive_serializer.partial }
