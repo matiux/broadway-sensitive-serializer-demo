@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  SensitiveUser\User\Infrastructure\Communication\Console\Symfony\:
+    resource: '%kernel.project_dir%/src/SensitiveUser/User/Infrastructure/Communication/Console/Symfony'
+    tags: ['console.command']

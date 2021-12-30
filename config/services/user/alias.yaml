@@ -1,0 +1,7 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  SensitiveUser\User\Domain\Aggregate\Users:
+    alias: SensitiveUser\User\Infrastructure\Domain\Broadway\Aggregate\BroadwayUsers

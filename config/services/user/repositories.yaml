@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  SensitiveUser\User\Infrastructure\Domain\Broadway\Aggregate\BroadwayUsers:
+    arguments:
+      - '@broadway.event_store.dbal'
+      - '@broadway.event_handling.event_bus'
