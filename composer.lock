@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f95cd672567c30dbddca1c7c523276d",
+    "content-hash": "9dee410ca0f5822b279dfe1eeba2fa74",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -992,16 +992,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "2.5.3",
+            "version": "2.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "f6cbf1816691bd2632407f6f34cf5db24fc2e411"
+                "reference": "f6191c50600bad1c0195638413f53aee6158b909"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/f6cbf1816691bd2632407f6f34cf5db24fc2e411",
-                "reference": "f6cbf1816691bd2632407f6f34cf5db24fc2e411",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/f6191c50600bad1c0195638413f53aee6158b909",
+                "reference": "f6191c50600bad1c0195638413f53aee6158b909",
                 "shasum": ""
             },
             "require": {
@@ -1085,7 +1085,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrineBundle/issues",
-                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.5.3"
+                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.5.4"
             },
             "funding": [
                 {
@@ -1101,7 +1101,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-29T08:13:45+00:00"
+            "time": "2021-12-30T18:43:28+00:00"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
@@ -2016,16 +2016,16 @@
         },
         {
             "name": "matiux/broadway-sensitive-serializer",
-            "version": "v0.1.11",
+            "version": "v0.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matiux/broadway-sensitive-serializer.git",
-                "reference": "9fff55763018e776add63418cfd13357f8dd26e3"
+                "reference": "3ef0073bf9525713e97d4d1ca78b6d4d85af6df9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/matiux/broadway-sensitive-serializer/zipball/9fff55763018e776add63418cfd13357f8dd26e3",
-                "reference": "9fff55763018e776add63418cfd13357f8dd26e3",
+                "url": "https://api.github.com/repos/matiux/broadway-sensitive-serializer/zipball/3ef0073bf9525713e97d4d1ca78b6d4d85af6df9",
+                "reference": "3ef0073bf9525713e97d4d1ca78b6d4d85af6df9",
                 "shasum": ""
             },
             "require": {
@@ -2079,9 +2079,9 @@
             ],
             "support": {
                 "issues": "https://github.com/matiux/broadway-sensitive-serializer/issues",
-                "source": "https://github.com/matiux/broadway-sensitive-serializer/tree/v0.1.11"
+                "source": "https://github.com/matiux/broadway-sensitive-serializer/tree/v0.1.12"
             },
-            "time": "2021-12-21T16:52:41+00:00"
+            "time": "2021-12-31T12:21:40+00:00"
         },
         {
             "name": "matiux/broadway-sensitive-serializer-bundle",
@@ -2089,7 +2089,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/matiux/broadway-sensitive-serializer-bundle.git",
-                "reference": "dacfab4cd49b37a52bedf6f3b3c26d960bc1f523"
+                "reference": "b8a838ff72881c454ffc050bde5dcfd9cf3b5df6"
             },
             "require": {
                 "broadway/broadway-bundle": "^0.5 | ^0.6",
@@ -2145,7 +2145,7 @@
                 "serializer",
                 "symfony"
             ],
-            "time": "2021-12-23T10:44:08+00:00"
+            "time": "2021-12-31T16:44:29+00:00"
         },
         {
             "name": "matiux/broadway-sensitive-serializer-dbal",
@@ -2220,7 +2220,7 @@
         },
         {
             "name": "matiux/ddd-starter-pack",
-            "version": "v3.x-dev",
+            "version": "v3.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matiux/ddd-starter-pack.git",
@@ -2253,7 +2253,6 @@
                 "vimeo/psalm": "^4.4",
                 "weirdan/doctrine-psalm-plugin": "^1.1"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -2282,7 +2281,7 @@
             ],
             "support": {
                 "issues": "https://github.com/matiux/ddd-starter-pack/issues",
-                "source": "https://github.com/matiux/ddd-starter-pack/tree/v3"
+                "source": "https://github.com/matiux/ddd-starter-pack/tree/v3.1.4"
             },
             "time": "2021-12-29T16:05:51+00:00"
         },
@@ -6961,8 +6960,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "matiux/broadway-sensitive-serializer-bundle": 20,
-        "matiux/ddd-starter-pack": 20
+        "matiux/broadway-sensitive-serializer-bundle": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

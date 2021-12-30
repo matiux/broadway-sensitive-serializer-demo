@@ -6,6 +6,7 @@ namespace SensitiveUser\User\Application\CommandHandler;
 
 use Broadway\CommandHandling\SimpleCommandHandler;
 use SensitiveUser\Shared\Domain\ValueObject\DateTimeRFC;
+use SensitiveUser\User\Application\Command\AddAddressCommand;
 use SensitiveUser\User\Application\Command\RegisterUserCommand;
 use SensitiveUser\User\Domain\Aggregate\User;
 use SensitiveUser\User\Domain\Aggregate\UserId;
@@ -29,5 +30,14 @@ class UserCommandHandler extends SimpleCommandHandler
         );
 
         $this->users->add($user);
+    }
+
+    public function handleAddAddressCommand(AddAddressCommand $command): void
+    {
+        $user = $this->users->byId(UserId::createFrom($command->userId));
+
+        $user->addAddress($command->address, DateTimeRFC::createFrom($command->occurredAt));
+
+        $this->users->update($user);
     }
 }
