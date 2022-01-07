@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9dee410ca0f5822b279dfe1eeba2fa74",
+    "content-hash": "e5b7a6316107bee2e6f67ba814ac9b49",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -2085,11 +2085,17 @@
         },
         {
             "name": "matiux/broadway-sensitive-serializer-bundle",
-            "version": "dev-feature/compiler_pass",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matiux/broadway-sensitive-serializer-bundle.git",
-                "reference": "c4b97c407a51c06f71afbcd44966f293dd980f6f"
+                "reference": "5882ed2d2cad2180cdc01e61eb04fd0230d8cceb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matiux/broadway-sensitive-serializer-bundle/zipball/5882ed2d2cad2180cdc01e61eb04fd0230d8cceb",
+                "reference": "5882ed2d2cad2180cdc01e61eb04fd0230d8cceb",
+                "shasum": ""
             },
             "require": {
                 "broadway/broadway-bundle": "^0.5 | ^0.6",
@@ -2109,6 +2115,7 @@
                 "roave/security-advisories": "dev-latest",
                 "symfony/framework-bundle": "^5.3 | ^6.0",
                 "symfony/var-dumper": "^5.3 | ^6.0",
+                "symfony/yaml": "^5.4",
                 "vimeo/psalm": "^4.10"
             },
             "suggest": {
@@ -2121,11 +2128,7 @@
                     "Matiux\\Broadway\\SensitiveSerializer\\Bundle\\SensitiveSerializerBundle\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Test\\Matiux\\Broadway\\SensitiveSerializer\\Bundle\\SensitiveSerializerBundle\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2147,7 +2150,11 @@
                 "serializer",
                 "symfony"
             ],
-            "time": "2022-01-07T11:17:35+00:00"
+            "support": {
+                "issues": "https://github.com/matiux/broadway-sensitive-serializer-bundle/issues",
+                "source": "https://github.com/matiux/broadway-sensitive-serializer-bundle/tree/v0.1.1"
+            },
+            "time": "2022-01-07T22:42:43+00:00"
         },
         {
             "name": "matiux/broadway-sensitive-serializer-dbal",
@@ -6964,9 +6971,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "matiux/broadway-sensitive-serializer-bundle": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
