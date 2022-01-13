@@ -14,14 +14,12 @@ broadway_sensitive_serializer:
     #    iv: null # Initialization vector. If null it will be generated internally and iv_encoding must be set to true
     #    iv_encoding: true # Encrypt the iv and is appends to encrypted value. It makes sense to set it to true if the iv option is set to null
   strategy:
-    name: whole
+    name: partial
     aggregate_key_auto_creation: true
-    excluded_id_key: id
-    excluded_keys:
-      - occurred_at
     events:
-      - SensitiveUser\User\Domain\Event\AddressAdded
-      - SensitiveUser\User\Domain\Event\UserRegistered
+      SensitiveUser\User\Domain\Event\UserRegistered:
+        - email
+        - surname
 
 services:
   broadway_sensitive_serializer.aggregate_keys.dbal:

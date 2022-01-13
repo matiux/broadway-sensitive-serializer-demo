@@ -11,7 +11,7 @@
         "broadway/event-store-dbal": "^0.6.0",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.10",
-        "matiux/broadway-sensitive-serializer-bundle": "^0.1",
+        "matiux/broadway-sensitive-serializer-bundle": "dev-feature/partial_strategy",
         "matiux/broadway-sensitive-serializer-dbal": "^0.1.3",
         "matiux/ddd-starter-pack": "^3.0",
         "symfony/console": "6.0.*",
