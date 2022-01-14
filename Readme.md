@@ -1,13 +1,18 @@
 Broadway Sensitive Serializer Demo
 ====
 
-```shell
-php bin/console sense:user:register <<name>> <<surname>> <<email>>
-php bin/console sense:user:add-address <<user-id>> <<address>>
-```
+Symfony example of how to use the [matiux/broadway-sensitive-serializer](https://github.com/matiux/broadway-sensitive-serializer/wiki) library
+in a CQRS + ES project made with [broadway/broadway](https://github.com/broadway/broadway) in order to make the system compliant with
+the GDPR law.
 
-## WIP command
-```shell
-php bin/console debug:container broadway_sensitive_serializer --show-arguments
-php bin/console debug:container --parameter=matiux.broadway.sensitive_serializer.strategy
-```
+You can switch between three branch:
+* [whole_strategy](https://github.com/matiux/broadway-sensitive-serializer-demo/tree/whole_strategy)
+* [partial_strategy](https://github.com/matiux/broadway-sensitive-serializer-demo/tree/partial_strategy)
+* [custom_strategy](https://github.com/matiux/broadway-sensitive-serializer-demo/tree/custom_strategy)
+
+### Documentation
+
+* [Demo wiki](https://github.com/matiux/broadway-sensitive-serializer-demo/wiki)
+* [Library wiki](https://github.com/matiux/broadway-sensitive-serializer/wiki)
+* [Bundle wiki](https://github.com/matiux/broadway-sensitive-serializer-bundle/blob/master/README.md)
+* [DBAL AggregateKeys repository wiki](https://github.com/matiux/broadway-sensitive-serializer-dbal/blob/master/README.md)

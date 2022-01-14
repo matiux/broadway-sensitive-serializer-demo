@@ -14,7 +14,7 @@ broadway_sensitive_serializer:
     #    iv: null # Initialization vector. If null it will be generated internally and iv_encoding must be set to true
     #    iv_encoding: true # Encrypt the iv and is appends to encrypted value. It makes sense to set it to true if the iv option is set to null
   strategy:
-    name: partial
+    name: custom
     aggregate_key_auto_creation: true
 
 services:
