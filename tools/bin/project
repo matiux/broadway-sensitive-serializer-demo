@@ -30,9 +30,16 @@ schema_drop() {
     --env="${APP_RUNTIME_ENV}"
 }
 
+database_create() {
+  php bin/console \
+    doctrine:database:create \
+    --no-interaction \
+    --env="${APP_RUNTIME_ENV}"
+}
+
 setup() {
   install_dependencies
-  schema_drop
+  database_create
   migrate
 }
 
@@ -145,11 +152,7 @@ while :; do
     php_staged_files
     break
     ;;
-  setup-test)
-    APP_RUNTIME_ENV='test' setup
-    break
-    ;;
-  setup-dev)
+  setup)
     APP_RUNTIME_ENV='dev' setup
     break
     ;;
@@ -214,21 +217,14 @@ while :; do
   shortlist)
     echo \
       php_staged_files \
-      setup-test \
-      setup-dev \
-      phpunit \
-      coverage \
-      coverage-badge \
+      setup \
       psalm \
       security-analysis \
       coding-standard-fix \
       coding-standard-fix-all \
       coding-standard-fix-staged \
       coding-standard-check-staged \
-      coding-standard-check-all \
-      deptrac \
-      deptrac-all \
-      create-badge
+      coding-standard-check-all
     break
     ;;
   esac

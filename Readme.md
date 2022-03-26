@@ -16,6 +16,17 @@ You can switch between three branch:
 git clone https://github.com/matiux/broadway-sensitive-serializer-demo.git && cd sensitive-serializer-demo
 cp docker/docker-compose.override.dist.yml docker/docker-compose.override.yml
 rm -rf .git/hooks && ln -s ../scripts/git-hooks .git/hooks
+./dc up -d
+./dc project setup
+```
+
+### Create User
+```
+./dc exec php bin/console sense:user:register <<name>> <<surname>> <<email>>
+```
+### Add address to User
+```
+./dc exec php bin/console sense:user:add-address <<user-id>> <<address>>
 ```
 
 ### Documentation
