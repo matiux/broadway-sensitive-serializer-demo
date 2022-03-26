@@ -1,5 +1,7 @@
 {
     "type": "project",
+    "name": "matiux/broadway-sensitive-serializer-demo",
+    "description": "Broadway sensitive serializer demo",
     "license": "proprietary",
     "minimum-stability": "dev",
     "prefer-stable": true,

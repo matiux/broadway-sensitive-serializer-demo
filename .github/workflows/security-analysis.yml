@@ -1,0 +1,32 @@
+name: "Security analysis"
+
+on:
+  pull_request: ~
+  workflow_dispatch: ~
+  push:
+    branches:
+      - whole_strategy
+      - custom_strategy
+      - partial_strategy
+
+jobs:
+  security-analysis:
+    name: "security analysis"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "checkout"
+        uses: "actions/checkout@v2"
+
+      - name: "installing PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "8.1"
+          ini-values: memory_limit=-1
+          tools: composer:v2, cs2pr
+          extensions: bcmath, mbstring, intl, sodium, json
+
+      - name: Install dependencies
+        run: ./tools/bin/project install_dependencies
+
+      - name: "running security analysis ( psalm )"
+        run: ./tools/bin/project security-analysis
