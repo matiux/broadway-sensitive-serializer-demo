@@ -1,7 +1,6 @@
-#!/usr/bin/env bash
+#! /bin/bash
 
 PHP_STAGED_FILES=$(git diff --name-only --cached --diff-filter=ACMR -- '*.php' | sed 's| |\\ |g')
-DEPTRAC_CONFIG_FILES='./config/deptrac/*'
 TOOLS_PATH='./tools'
 CMD=$1
 shift 1
@@ -53,19 +52,6 @@ phpunit() {
     "$@"
 }
 
-coverage_badge() {
-
-  vendor/bin/php-coverage-badger \
-    .coverage/coverage-clover.xml \
-    .coverage/coverage-badge.svg
-
-  inkscape \
-    --export-png=public/coverage-badge.png \
-    --export-dpi=200 \
-    --export-background-opacity=0 \
-    --without-gui .coverage/coverage-badge.svg &>/dev/null
-}
-
 coverage() {
   export XDEBUG_MODE=coverage
 
@@ -104,50 +90,12 @@ coding_standard_fix() {
 #  return $STATUS
 }
 
-deptrac() {
-
-  DEPFILE=$1
-  IMG=$(basename "${DEPFILE%.yaml}".png)
-
-  php "$TOOLS_PATH"/deptrac/deptrac.phar analyse \
-    "$DEPFILE" \
-    --formatter=table \
-    --cache-file="$TOOLS_PATH"/deptrac/.deptrac.cache \
-    --formatter=graphviz \
-    --graphviz-dump-image=doc/deptrac/"$IMG"
-}
-
-create_badge() {
-
-  #project badge "static analysis" passed psalm
-
-  BADGE_NAME="$1"
-  STATUS="$2"
-  TOOL_NAME="$3"
-  COLOR=$(if [ "$STATUS" == "passed" ]; then echo "green"; else echo "red"; fi)
-
-  rm -f "public/$TOOL_NAME.svg"
-  rm -f "public/$TOOL_NAME.png"
-
-  ./vendor/bin/poser \
-    "$BADGE_NAME" \
-    "$STATUS" \
-    "$COLOR" \
-    -p "public/$TOOL_NAME.svg" \
-    -s plastic \
-    &>/dev/null
-
-  inkscape --export-png="public/$TOOL_NAME.png" \
-    --export-dpi=200 \
-    --export-background-opacity=0 \
-    --without-gui "public/$TOOL_NAME.svg" \
-    &>/dev/null
-
-  rm -f "public/$TOOL_NAME.svg"
-}
-
 while :; do
   case $CMD in
+  install_dependencies)
+    install_dependencies
+    break
+    ;;
   php_staged_files)
     php_staged_files
     break
@@ -164,16 +112,16 @@ while :; do
     coverage
     exit $?
     ;;
-  coverage-badge)
-    coverage_badge
-    break
-    ;;
   psalm)
     psalm "$@"
     exit $?
     ;;
   security-analysis)
     psalm --taint-analysis
+    exit $?
+    ;;
+  type-coverage)
+    psalm --shepherd
     exit $?
     ;;
   coding-standard-fix)
@@ -200,26 +148,13 @@ while :; do
     coding_standard_fix --dry-run ./src ./tests
     exit $?
     ;;
-  deptrac)
-    deptrac "$1"
-    exit $?
-    ;;
-  deptrac-all)
-    for f in $DEPTRAC_CONFIG_FILES; do
-      deptrac "$f"
-    done
-    exit $?
-    ;;
-  create-badge)
-    create_badge "$@"
-    break
-    ;;
   shortlist)
     echo \
       php_staged_files \
       setup \
       psalm \
       security-analysis \
+      type-coverage \
       coding-standard-fix \
       coding-standard-fix-all \
       coding-standard-fix-staged \
