@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  SensitiveUser\User\Application\DataTransformer\:
+    resource: '%kernel.project_dir%/src/SensitiveUser/User/Application/DataTransformer/*'

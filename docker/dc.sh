@@ -40,7 +40,7 @@ elif [[ "$1" == "psalm-no-pseudo-tty" ]]; then shift 1;                 ${DC_EXE
 elif [[ "$1" == "deptrac-all" ]]; then shift 1;                         ${DC_EXEC_PHP} $PROJECT_TOOL deptrac-all
 elif [[ "$1" == "project" ]]; then shift 1;                             ${DC_EXEC_PHP} $PROJECT_TOOL "$@"
 
-elif [[ "$1" == "exec" ]]; then shift 1;                                ${DC_EXEC_PHP} "$@"
+elif [[ "$1" == "exec" ]]; then shift 1;                                ${DC_EXEC_PHP_NO_PSEUDO_TTY} "$@"
 elif [[ $# -gt 0 ]]; then                                               ${DC_BASE_COMMAND} "$@"
 else                                                                    ${DC_BASE_COMMAND} ps
 fi
