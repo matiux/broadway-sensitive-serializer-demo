@@ -26,7 +26,6 @@ class UserRegistered extends BasicEvent
         parent::__construct($userId, $occurredAt);
     }
 
-    #[Pure]
     public function serialize(): array
     {
         $serialized = [

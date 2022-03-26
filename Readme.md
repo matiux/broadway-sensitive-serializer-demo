@@ -10,6 +10,14 @@ You can switch between three branch:
 * [partial_strategy](https://github.com/matiux/broadway-sensitive-serializer-demo/tree/partial_strategy)
 * [custom_strategy](https://github.com/matiux/broadway-sensitive-serializer-demo/tree/custom_strategy)
 
+### Setup for development
+
+```shell
+git clone https://github.com/matiux/broadway-sensitive-serializer-demo.git && cd sensitive-serializer-demo
+cp docker/docker-compose.override.dist.yml docker/docker-compose.override.yml
+rm -rf .git/hooks && ln -s ../scripts/git-hooks .git/hooks
+```
+
 ### Documentation
 
 * [Demo wiki](https://github.com/matiux/broadway-sensitive-serializer-demo/wiki)
