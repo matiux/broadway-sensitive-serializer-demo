@@ -11,4 +11,9 @@ interface ListUsers
     public function add(ListUser $listUser): void;
 
     public function byId(UserId $userId): null|ListUser;
+
+    /**
+     * @return list<ListUser>
+     */
+    public function all(): array;
 }

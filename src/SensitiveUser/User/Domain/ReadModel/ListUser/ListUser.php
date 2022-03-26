@@ -10,8 +10,8 @@ use SensitiveUser\User\Domain\Aggregate\UserId;
 class ListUser implements Identifiable
 {
     public function __construct(
-        private UserId $userId,
-        private string $email
+        private readonly UserId $userId,
+        public readonly string $email
     ) {
     }
 
