@@ -41,4 +41,10 @@ class DoctrineListUsers extends DoctrineRepository implements ListUsers
 
         return $listUsers;
     }
+
+    public function delete(ListUser $listUser): void
+    {
+        $this->em->remove($listUser);
+        $this->em->flush();
+    }
 }
