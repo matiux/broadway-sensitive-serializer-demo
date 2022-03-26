@@ -16,4 +16,6 @@ interface ListUsers
      * @return list<ListUser>
      */
     public function all(): array;
+
+    public function delete(ListUser $listUser): void;
 }

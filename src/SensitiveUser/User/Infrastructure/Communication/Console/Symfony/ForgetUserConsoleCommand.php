@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace SensitiveUser\User\Infrastructure\Communication\Console\Symfony;
 
-use SensitiveUser\Shared\Domain\ValueObject\DateTimeRFC;
-use SensitiveUser\User\Application\Command\RegisterUserCommand;
+use SensitiveUser\User\Application\Command\ForgetUserCommand;
 use SensitiveUser\User\Application\CommandHandler\UserCommandHandler;
-use SensitiveUser\User\Domain\Aggregate\UserId;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -16,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
-class RegisterUserConsoleCommand extends Command
+class ForgetUserConsoleCommand extends Command
 {
     private OutputInterface $output;
     private InputInterface $input;
@@ -29,12 +27,10 @@ class RegisterUserConsoleCommand extends Command
 
     protected function configure(): void
     {
-        $this->setName('sense:user:register')
-            ->setDescription('Register new user')
+        $this->setName('sense:user:forget')
+            ->setDescription('Add address to existing user')
             ->setDefinition([
-                new InputArgument('name', InputArgument::REQUIRED, 'User name'),
-                new InputArgument('surname', InputArgument::REQUIRED, 'User surname'),
-                new InputArgument('email', InputArgument::REQUIRED, 'User email'),
+                new InputArgument('userid', InputArgument::REQUIRED, 'User id'),
             ]);
     }
 
@@ -48,24 +44,12 @@ class RegisterUserConsoleCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $name = $input->getArgument('name');
-        $surname = $input->getArgument('surname');
-        $email = $input->getArgument('email');
-
-        $userId = (string) UserId::create();
-
-        $command = new RegisterUserCommand(
-            $userId,
-            $name,
-            $surname,
-            $email,
-            (string) (new DateTimeRFC())
+        $command = new ForgetUserCommand(
+            $input->getArgument('userid'),
         );
 
         try {
             $this->userCommandHandler->handle($command);
-
-            $this->output->write(json_encode(['user_id' => $userId]));
 
             return Command::SUCCESS;
         } catch (\Throwable $t) {
