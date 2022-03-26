@@ -25,7 +25,7 @@ abstract class BasicEvent implements Serializable, DomainEvent
         protected DateTimeRFC $occurredAt,
     ) {
     }
-    
+
     protected function basicSerialize(): array
     {
         return [

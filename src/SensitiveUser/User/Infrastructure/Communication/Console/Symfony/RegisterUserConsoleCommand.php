@@ -65,7 +65,6 @@ class RegisterUserConsoleCommand extends Command
 
             return Command::SUCCESS;
         } catch (\Throwable $t) {
-
             dump($t);
 
             return Command::FAILURE;
