@@ -15,7 +15,6 @@ use SensitiveUser\User\Domain\Aggregate\UserId;
 class UserRegistered extends BasicEvent
 {
     #[Pure]
-
     public function __construct(
         UserId $userId,
         public readonly string $name,

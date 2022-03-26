@@ -8,3 +8,9 @@ services:
     arguments:
       - '@broadway.event_store.dbal'
       - '@broadway.event_handling.event_bus'
+
+  # Read models
+  SensitiveUser\User\Infrastructure\Domain\Doctrine\ReadModel\DoctrineListUsers:
+    arguments:
+      - '@doctrine'
+      - 'SensitiveUser\User\Domain\ReadModel\ListUser\ListUser'

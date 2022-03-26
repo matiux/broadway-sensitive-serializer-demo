@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  SensitiveUser\User\Application\Projector\:
+    resource: '%kernel.project_dir%/src/SensitiveUser/User/Application/Projector/*'
+    tags:
+      - { name: broadway.domain.event_listener }
