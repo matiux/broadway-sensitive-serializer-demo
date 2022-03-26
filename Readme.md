@@ -29,6 +29,11 @@ rm -rf .git/hooks && ln -s ../scripts/git-hooks .git/hooks
 ./dc exec php bin/console sense:user:add-address <<user-id>> <<address>>
 ```
 
+### Show user list
+```
+./dc exec php bin/console sense:user:show-list | jq
+```
+
 ### Documentation
 
 * [Demo wiki](https://github.com/matiux/broadway-sensitive-serializer-demo/wiki)

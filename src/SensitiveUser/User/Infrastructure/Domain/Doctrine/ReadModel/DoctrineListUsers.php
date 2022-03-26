@@ -33,4 +33,12 @@ class DoctrineListUsers extends DoctrineRepository implements ListUsers
 
         return $listUser;
     }
+
+    public function all(): array
+    {
+        /** @var list<ListUser> $listUsers */
+        $listUsers = $this->em->getRepository($this->getEntityClassName())->findAll();
+
+        return $listUsers;
+    }
 }
