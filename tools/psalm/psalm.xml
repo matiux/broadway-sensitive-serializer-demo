@@ -17,10 +17,6 @@
         </ignoreFiles>
     </projectFiles>
 
-    <extraFiles>
-        <directory name="../../vendor/bin/.phpunit/phpunit"/>
-    </extraFiles>
-
     <issueHandlers>
         <ParamNameMismatch errorLevel="suppress"/>
         <MissingConstructor>
