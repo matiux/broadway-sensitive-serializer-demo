@@ -9,6 +9,7 @@ doctrine:
       collate: utf8_general_ci
     types:
       UserId: SensitiveUser\User\Infrastructure\Domain\Doctrine\Aggregate\DoctrineUserId
+      Email: SensitiveUser\User\Infrastructure\Domain\Doctrine\Aggregate\DoctrineEmail
   orm:
     auto_generate_proxy_classes: true
     #naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware

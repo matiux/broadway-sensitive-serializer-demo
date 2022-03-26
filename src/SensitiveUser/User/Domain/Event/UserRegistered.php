@@ -8,6 +8,8 @@ use Psalm\Pure;
 use SensitiveUser\Shared\Domain\Event\BasicEvent;
 use SensitiveUser\Shared\Domain\ValueObject\DateTimeRFC;
 use SensitiveUser\User\Domain\Aggregate\UserId;
+use SensitiveUser\User\Domain\Exception\InvalidUserException;
+use SensitiveUser\User\Domain\ValueObject\Email;
 
 /**
  * @extends BasicEvent<UserId>
@@ -19,7 +21,7 @@ class UserRegistered extends BasicEvent
         UserId $userId,
         public readonly string $name,
         public readonly string $surname,
-        public readonly string $email,
+        public readonly Email $email,
         DateTimeRFC $occurredAt,
     ) {
         parent::__construct($userId, $occurredAt);
@@ -30,19 +32,26 @@ class UserRegistered extends BasicEvent
         $serialized = [
             'name' => $this->name,
             'surname' => $this->surname,
-            'email' => $this->email,
+            'email' => (string) $this->email,
         ];
 
         return $this->basicSerialize() + $serialized;
     }
 
+    /**
+     * @param array $data
+     *
+     * @throws InvalidUserException
+     *
+     * @return UserRegistered
+     */
     public static function deserialize(array $data): UserRegistered
     {
         return new self(
             UserId::createFrom((string) $data[self::AGGREGATE_ID_KEY]),
             (string) $data['name'],
             (string) $data['surname'],
-            (string) $data['email'],
+            Email::crea((string) $data['email']),
             self::createOccurredAt((string) $data['occurred_at'])
         );
     }
