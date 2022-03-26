@@ -7,7 +7,6 @@ namespace SensitiveUser\Shared\Domain\Event;
 use Broadway\Serializer\Serializable;
 use DDDStarterPack\Aggregate\Domain\BasicEntityId;
 use DDDStarterPack\Event\DomainEvent;
-use JetBrains\PhpStorm\ArrayShape;
 use SensitiveUser\Shared\Domain\ValueObject\DateTimeRFC;
 
 /**
@@ -27,7 +26,6 @@ abstract class BasicEvent implements Serializable, DomainEvent
     ) {
     }
 
-    #[ArrayShape([self::AGGREGATE_ID_KEY => 'string', 'occurred_at' => 'string'])]
     protected function basicSerialize(): array
     {
         return [
