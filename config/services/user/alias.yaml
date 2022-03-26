@@ -5,3 +5,6 @@ services:
 
   SensitiveUser\User\Domain\Aggregate\Users:
     alias: SensitiveUser\User\Infrastructure\Domain\Broadway\Aggregate\BroadwayUsers
+
+  SensitiveUser\User\Domain\ReadModel\ListUser\ListUsers:
+    alias: SensitiveUser\User\Infrastructure\Domain\Doctrine\ReadModel\DoctrineListUsers
