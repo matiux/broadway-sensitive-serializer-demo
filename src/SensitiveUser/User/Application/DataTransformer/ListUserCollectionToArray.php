@@ -22,7 +22,7 @@ class ListUserCollectionToArray extends BasicCollectionDataTransformer
         foreach ($collection as $listUser) {
             $listUsers[] = [
                 'id' => $listUser->getId(),
-                'email' => $listUser->email,
+                'email' => (string) $listUser->email,
             ];
         }
 

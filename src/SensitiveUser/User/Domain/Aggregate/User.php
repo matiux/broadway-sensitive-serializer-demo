@@ -8,17 +8,23 @@ use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use SensitiveUser\Shared\Domain\ValueObject\DateTimeRFC;
 use SensitiveUser\User\Domain\Event\AddressAdded;
 use SensitiveUser\User\Domain\Event\UserRegistered;
+use SensitiveUser\User\Domain\ValueObject\Email;
 
 class User extends EventSourcedAggregateRoot
 {
     private UserId $userId;
     private string $name;
     private string $surname;
-    private string $email;
+    private Email $email;
     private string $address;
 
-    public static function create(UserId $userId, string $name, string $surname, string $email, DateTimeRFC $registrationDate): self
-    {
+    public static function create(
+        UserId $userId,
+        string $name,
+        string $surname,
+        Email $email,
+        DateTimeRFC $registrationDate
+    ): self {
         $user = new self();
         $user->apply(new UserRegistered($userId, $name, $surname, $email, $registrationDate));
 

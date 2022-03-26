@@ -11,6 +11,8 @@ use SensitiveUser\User\Application\Command\RegisterUserCommand;
 use SensitiveUser\User\Domain\Aggregate\User;
 use SensitiveUser\User\Domain\Aggregate\UserId;
 use SensitiveUser\User\Domain\Aggregate\Users;
+use SensitiveUser\User\Domain\Exception\InvalidUserException;
+use SensitiveUser\User\Domain\ValueObject\Email;
 
 class UserCommandHandler extends SimpleCommandHandler
 {
@@ -19,13 +21,18 @@ class UserCommandHandler extends SimpleCommandHandler
     ) {
     }
 
+    /**
+     * @param RegisterUserCommand $command
+     *
+     * @throws InvalidUserException
+     */
     public function handleRegisterUserCommand(RegisterUserCommand $command): void
     {
         $user = User::create(
             UserId::createFrom($command->userId),
             $command->name,
             $command->surname,
-            $command->email,
+            Email::crea($command->email),
             DateTimeRFC::createFrom($command->registrationDate)
         );
 

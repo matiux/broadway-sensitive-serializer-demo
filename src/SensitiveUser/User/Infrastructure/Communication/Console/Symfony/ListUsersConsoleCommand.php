@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
-class ListUsersCommand extends Command
+class ListUsersConsoleCommand extends Command
 {
     private OutputInterface $output;
     private InputInterface $input;
