@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SensitiveUser\User\Application\Service;
 
 use DDDStarterPack\Service\Application\ApplicationService;
-use Matiux\Broadway\SensitiveSerializer\DataManager\Domain\Aggregate\AggregateKeys;
 use Matiux\Broadway\SensitiveSerializer\DataManager\Domain\Exception\AggregateKeyNotFoundException;
 use Matiux\Broadway\SensitiveSerializer\DataManager\Domain\Service\AggregateKeyManager;
 use Ramsey\Uuid\Rfc4122\UuidV4;
@@ -22,7 +21,6 @@ class ForgetUser implements ApplicationService
     public function __construct(
         private ListUsers $listUsers,
         private AggregateKeyManager $aggregateKeyManager,
-        private AggregateKeys $aggregateKeys,
         private UserReplayer $userReplayer
     ) {
     }
@@ -39,17 +37,9 @@ class ForgetUser implements ApplicationService
 
         $this->listUsers->delete($this->findListUserOrFail($userId));
 
-        // TODO Improves id handling
-        $aggregateKey = $this->aggregateKeyManager->obtainAggregateKeyOrFail(UuidV4::fromString((string) $userId));
-
-        // TODO Include this algorithm in the AggregateKeyManager? Maybe in a forget() method
-        if ($aggregateKey->exists()) {
-            $aggregateKey->delete();
-            $this->aggregateKeys->update($aggregateKey);
-        }
+        $this->aggregateKeyManager->forget(UuidV4::fromString((string) $userId));
 
         $this->userReplayer->replayForAggregate((string) $userId);
-        // TODO End algorithm
     }
 
     /**
