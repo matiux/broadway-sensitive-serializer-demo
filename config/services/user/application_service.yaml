@@ -8,10 +8,9 @@ services:
     resource: '%kernel.project_dir%/src/SensitiveUser/User/Application/Service/*'
     #exclude:  '%kernel.project_dir%/src/SensitiveUser/User/Application/Service/**/{*Request.php,*Exception.php,MakeTheMove.php,ShowPlayStatus.php}'
 
-  SensitiveUser\User\Application\Service\ForgotUser:
+  SensitiveUser\User\Application\Service\ForgetUser:
     arguments:
       $aggregateKeyManager: "@broadway_sensitive_serializer.aggregate_key_manager"
-      $aggregateKeys: "@broadway_sensitive_serializer.aggregate_keys.dbal"
       
   SensitiveUser\User\Application\Service\UserReplayer:
     arguments:
