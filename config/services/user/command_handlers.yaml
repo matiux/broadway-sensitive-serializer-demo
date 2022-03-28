@@ -4,7 +4,13 @@ services:
     autoconfigure: true
     public: false
 
-  SensitiveUser\User\Application\CommandHandler\:
-    resource: '%kernel.project_dir%/src/SensitiveUser/User/Application/CommandHandler/*'
+#  SensitiveUser\User\Application\CommandHandler\:
+#    resource: '%kernel.project_dir%/src/SensitiveUser/User/Application/CommandHandler/*'
+#    tags:
+#      - { name: broadway.command_handler }
+
+  SensitiveUser\User\Application\CommandHandler\UserCommandHandler:
     tags:
       - { name: broadway.command_handler }
+    arguments:
+      $registerUser: '@SensitiveUser\User\Application\Service\RegisterUserTransactional'

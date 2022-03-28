@@ -4,9 +4,11 @@ services:
     autoconfigure: true
     public: false
 
-  SensitiveUser\User\Application\Service\:
-    resource: '%kernel.project_dir%/src/SensitiveUser/User/Application/Service/*'
-    #exclude:  '%kernel.project_dir%/src/SensitiveUser/User/Application/Service/**/{*Request.php,*Exception.php,MakeTheMove.php,ShowPlayStatus.php}'
+#  SensitiveUser\User\Application\Service\:
+#    resource: '%kernel.project_dir%/src/SensitiveUser/User/Application/Service/*'
+#    #exclude:  '%kernel.project_dir%/src/SensitiveUser/User/Application/Service/**/{*Request.php,*Exception.php,MakeTheMove.php,ShowPlayStatus.php}'
+
+  SensitiveUser\User\Application\Service\ShowUserList: ~
 
   SensitiveUser\User\Application\Service\ForgetUser:
     arguments:
@@ -15,3 +17,7 @@ services:
   SensitiveUser\User\Application\Service\UserReplayer:
     arguments:
       $eventStore: "@broadway.event_store.dbal"
+
+  SensitiveUser\User\Application\Service\RegisterUserTransactional:
+    arguments:
+      $service: '@SensitiveUser\User\Domain\Service\RegisterUser'
