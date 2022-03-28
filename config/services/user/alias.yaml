@@ -8,3 +8,6 @@ services:
 
   SensitiveUser\User\Domain\ReadModel\ListUser\ListUsers:
     alias: SensitiveUser\User\Infrastructure\Domain\Doctrine\ReadModel\DoctrineListUsers
+
+  DDDStarterPack\Service\Application\TransactionalSession:
+    alias: DDDStarterPack\Service\Infrastructure\Doctrine\DoctrineTransactionalSession
