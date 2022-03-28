@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  DDDStarterPack\Service\Infrastructure\Doctrine\DoctrineTransactionalSession:
+    arguments:
+      - '@doctrine.orm.default_entity_manager'

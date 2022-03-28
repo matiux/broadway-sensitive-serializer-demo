@@ -10,16 +10,16 @@ use SensitiveUser\User\Application\Command\AddAddressCommand;
 use SensitiveUser\User\Application\Command\ForgetUserCommand;
 use SensitiveUser\User\Application\Command\RegisterUserCommand;
 use SensitiveUser\User\Application\Service\ForgetUser;
-use SensitiveUser\User\Domain\Aggregate\User;
 use SensitiveUser\User\Domain\Aggregate\UserId;
 use SensitiveUser\User\Domain\Aggregate\Users;
 use SensitiveUser\User\Domain\Exception\InvalidUserException;
-use SensitiveUser\User\Domain\ValueObject\Email;
+use SensitiveUser\User\Domain\Service\RegisterUserI;
 
 class UserCommandHandler extends SimpleCommandHandler
 {
     public function __construct(
         private Users $users,
+        private RegisterUserI $registerUser,
         private ForgetUser $forgetUser
     ) {
     }
@@ -31,15 +31,7 @@ class UserCommandHandler extends SimpleCommandHandler
      */
     public function handleRegisterUserCommand(RegisterUserCommand $command): void
     {
-        $user = User::create(
-            UserId::createFrom($command->userId),
-            $command->name,
-            $command->surname,
-            Email::crea($command->email),
-            DateTimeRFC::createFrom($command->registrationDate)
-        );
-
-        $this->users->add($user);
+        $this->registerUser->execute($command);
     }
 
     public function handleAddAddressCommand(AddAddressCommand $command): void
