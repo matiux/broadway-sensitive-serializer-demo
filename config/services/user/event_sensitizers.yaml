@@ -8,3 +8,8 @@ services:
     parent: Matiux\Broadway\SensitiveSerializer\Serializer\Strategy\PayloadSensitizer
     tags:
       - { name: broadway.sensitive_serializer.custom }
+
+  SensitiveUser\User\Domain\EventSensitizer\AddressAddedSensitizer:
+    parent: Matiux\Broadway\SensitiveSerializer\Serializer\Strategy\PayloadSensitizer
+    tags:
+      - { name: broadway.sensitive_serializer.custom }

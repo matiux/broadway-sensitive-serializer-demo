@@ -6,11 +6,11 @@ namespace SensitiveUser\User\Domain\EventSensitizer;
 
 use Assert\Assertion as Assert;
 use Assert\AssertionFailedException;
-use Broadway\Serializer\Serializable;
+use InvalidArgumentException;
 use Matiux\Broadway\SensitiveSerializer\Serializer\Strategy\PayloadSensitizer;
-use SensitiveUser\User\Domain\Event\UserRegistered;
+use SensitiveUser\User\Domain\Event\AddressAdded;
 
-class UserRegisteredSensitizer extends PayloadSensitizer
+class AddressAddedSensitizer extends PayloadSensitizer
 {
     /**
      * {@inheritDoc}
@@ -22,30 +22,14 @@ class UserRegisteredSensitizer extends PayloadSensitizer
         $this->validatePayload($this->getPayload());
 
         $email = $this->getSensitiveDataManager()->encrypt(
-            sensitiveData: (string) $this->getPayload()['email'],
+            sensitiveData: (string) $this->getPayload()['address'],
             secretKey: $decryptedAggregateKey
         );
 
         $payload = $this->getPayload();
-        $payload['email'] = $email;
+        $payload['address'] = $email;
 
         return $payload;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function supports($subject): bool
-    {
-        if (is_array($subject)) {
-            return UserRegistered::class == $subject['class'];
-        }
-
-//        if ($subject instanceof Serializable) {
-//            return UserRegistered::class == $subject->serialize()['class'];
-//        }
-
-        throw new \InvalidArgumentException();
     }
 
     /**
@@ -56,14 +40,23 @@ class UserRegisteredSensitizer extends PayloadSensitizer
         $this->validatePayload($this->getPayload());
 
         $email = $this->getSensitiveDataManager()->decrypt(
-            encryptedSensitiveData: (string) $this->getPayload()['email'],
+            encryptedSensitiveData: (string) $this->getPayload()['address'],
             secretKey: $decryptedAggregateKey
         );
 
         $payload = $this->getPayload();
-        $payload['email'] = $email;
+        $payload['address'] = $email;
 
         return $payload;
+    }
+
+    public function supports($subject): bool
+    {
+        if (is_array($subject)) {
+            return AddressAdded::class == $subject['class'];
+        }
+
+        throw new InvalidArgumentException();
     }
 
     /**
@@ -71,6 +64,6 @@ class UserRegisteredSensitizer extends PayloadSensitizer
      */
     protected function validatePayload(array $payload): void
     {
-        Assert::keyExists($payload, 'email', "Key 'email' should be set in payload.");
+        Assert::keyExists($payload, 'address', "Key 'address' should be set in payload.");
     }
 }
