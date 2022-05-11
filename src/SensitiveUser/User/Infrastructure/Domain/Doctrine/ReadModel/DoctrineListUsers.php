@@ -23,6 +23,11 @@ class DoctrineListUsers extends DoctrineRepository implements ListUsers
         $this->em->clear();
     }
 
+    public function update(ListUser $listUser): void
+    {
+        $this->add($listUser);
+    }
+
     public function byId(UserId $userId): null|ListUser
     {
         /** @var null|ListUser $listUser */

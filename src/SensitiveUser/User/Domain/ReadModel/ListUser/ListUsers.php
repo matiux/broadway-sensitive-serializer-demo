@@ -10,6 +10,8 @@ interface ListUsers
 {
     public function add(ListUser $listUser): void;
 
+    public function update(ListUser $listUser): void;
+
     public function byId(UserId $userId): null|ListUser;
 
     /**

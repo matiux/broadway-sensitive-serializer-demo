@@ -6,5 +6,6 @@
     <entity name="SensitiveUser\User\Domain\ReadModel\ListUser\ListUser" table="`list_users`">
         <id name="userId" type="UserId" column="user_id"/>
         <field name="email" type="Email" column="email" nullable="false"/>
+        <field name="address" type="string" column="address" nullable="true"/>
     </entity>
 </doctrine-mapping>

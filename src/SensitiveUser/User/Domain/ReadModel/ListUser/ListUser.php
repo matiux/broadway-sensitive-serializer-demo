@@ -10,6 +10,8 @@ use SensitiveUser\User\Domain\ValueObject\Email;
 
 class ListUser implements Identifiable
 {
+    private null|string $address = null;
+
     public function __construct(
         private readonly UserId $userId,
         public readonly Email $email
@@ -19,6 +21,11 @@ class ListUser implements Identifiable
     public static function create(UserId $userId, Email $email): self
     {
         return new self($userId, $email);
+    }
+
+    public function editAddress(string $address): void
+    {
+        $this->address = $address;
     }
 
     public function getId(): string
