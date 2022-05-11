@@ -1958,16 +1958,16 @@
         },
         {
             "name": "matiux/broadway-sensitive-serializer",
-            "version": "v0.1.22",
+            "version": "v0.1.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matiux/broadway-sensitive-serializer.git",
-                "reference": "6b958345661628da406a97b6102d0f5dbdb50214"
+                "reference": "7058429d4e06e5db15d105a43cc720a00c49c7cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/matiux/broadway-sensitive-serializer/zipball/6b958345661628da406a97b6102d0f5dbdb50214",
-                "reference": "6b958345661628da406a97b6102d0f5dbdb50214",
+                "url": "https://api.github.com/repos/matiux/broadway-sensitive-serializer/zipball/7058429d4e06e5db15d105a43cc720a00c49c7cf",
+                "reference": "7058429d4e06e5db15d105a43cc720a00c49c7cf",
                 "shasum": ""
             },
             "require": {
@@ -2022,22 +2022,22 @@
             ],
             "support": {
                 "issues": "https://github.com/matiux/broadway-sensitive-serializer/issues",
-                "source": "https://github.com/matiux/broadway-sensitive-serializer/tree/v0.1.22"
+                "source": "https://github.com/matiux/broadway-sensitive-serializer/tree/v0.1.23"
             },
-            "time": "2022-03-27T00:28:46+00:00"
+            "time": "2022-05-11T17:40:04+00:00"
         },
         {
             "name": "matiux/broadway-sensitive-serializer-bundle",
-            "version": "v0.1.5",
+            "version": "v0.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matiux/broadway-sensitive-serializer-bundle.git",
-                "reference": "10dd62b72fb1838f3c73b023bbb2899edd3978a9"
+                "reference": "efcb0f3afbf1f0555cce8db1f0b851dd9f5c9519"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/matiux/broadway-sensitive-serializer-bundle/zipball/10dd62b72fb1838f3c73b023bbb2899edd3978a9",
-                "reference": "10dd62b72fb1838f3c73b023bbb2899edd3978a9",
+                "url": "https://api.github.com/repos/matiux/broadway-sensitive-serializer-bundle/zipball/efcb0f3afbf1f0555cce8db1f0b851dd9f5c9519",
+                "reference": "efcb0f3afbf1f0555cce8db1f0b851dd9f5c9519",
                 "shasum": ""
             },
             "require": {
@@ -2095,9 +2095,9 @@
             ],
             "support": {
                 "issues": "https://github.com/matiux/broadway-sensitive-serializer-bundle/issues",
-                "source": "https://github.com/matiux/broadway-sensitive-serializer-bundle/tree/v0.1.5"
+                "source": "https://github.com/matiux/broadway-sensitive-serializer-bundle/tree/v0.1.6"
             },
-            "time": "2022-03-25T22:20:16+00:00"
+            "time": "2022-05-11T19:26:59+00:00"
         },
         {
             "name": "matiux/broadway-sensitive-serializer-dbal",
