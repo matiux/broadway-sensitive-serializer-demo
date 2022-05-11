@@ -1,7 +1,6 @@
 version: '3.8'
 
 volumes:
-#  app_memcached: {}
   app_database: {}
 
 networks:
@@ -13,7 +12,7 @@ services:
 
   php_broadway_sensitive_serializer_demo:
     build: php
-    hostname: broadway_sensitive_serializer_demo_host
+    hostname: sensitive_serializer_demo
     volumes:
       - ../:/var/www/app:delegated
       - ./data/shell_history:/home/utente/shell_history
