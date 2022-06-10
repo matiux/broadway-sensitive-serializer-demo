@@ -27,7 +27,7 @@ rm -rf .git/hooks && ln -s ../scripts/git-hooks .git/hooks
 ./dc project setup
 ```
 
-This repository uses github actions to perform some checks. If you want to test the actions locally you can use [act](https://github.com/nektos/act).
+This repository uses GitHub actions to perform some checks. If you want to test the actions locally you can use [act](https://github.com/nektos/act).
 For example if you want to check the action for static analysis
 ```
 act -P ubuntu-latest=shivammathur/node:latest --job static-analysis
@@ -50,6 +50,11 @@ act -P ubuntu-latest=shivammathur/node:latest --job static-analysis
 ### Forget user
 ```
 ./dc exec php bin/console sense:user:forget <<user-id>>
+```
+
+### Replay user events
+```
+./dc exec php bin/console sense:user:replay <<user-id>>
 ```
 
 ### Documentation
