@@ -11,6 +11,9 @@ class RegisterUserCommand
         public readonly string $name,
         public readonly string $surname,
         public readonly string $email,
+        public readonly int $age,
+        public readonly float $height,
+        public readonly array $characteristics,
         public readonly string $registrationDate,
     ) {
     }

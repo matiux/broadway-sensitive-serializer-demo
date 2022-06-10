@@ -12,6 +12,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Throwable;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
@@ -35,6 +36,9 @@ class RegisterUserConsoleCommand extends Command
                 new InputArgument('name', InputArgument::REQUIRED, 'User name'),
                 new InputArgument('surname', InputArgument::REQUIRED, 'User surname'),
                 new InputArgument('email', InputArgument::REQUIRED, 'User email'),
+                new InputArgument('age', InputArgument::OPTIONAL, 'User age', 36),
+                new InputArgument('height', InputArgument::OPTIONAL, 'User height', 1.75),
+                new InputArgument('characteristics', InputArgument::OPTIONAL, 'User characteristics', ['blond']),
             ]);
     }
 
@@ -51,6 +55,9 @@ class RegisterUserConsoleCommand extends Command
         $name = $input->getArgument('name');
         $surname = $input->getArgument('surname');
         $email = $input->getArgument('email');
+        $age = $input->getArgument('age');
+        $height = $input->getArgument('height');
+        $characteristics = $input->getArgument('characteristics');
 
         $userId = (string) UserId::create();
 
@@ -59,7 +66,10 @@ class RegisterUserConsoleCommand extends Command
             $name,
             $surname,
             $email,
-            (string) (new DateTimeRFC())
+            $age,
+            $height,
+            $characteristics,
+            (string) (new DateTimeRFC()),
         );
 
         try {
@@ -68,7 +78,7 @@ class RegisterUserConsoleCommand extends Command
             $this->output->write(json_encode(['user_id' => $userId]));
 
             return Command::SUCCESS;
-        } catch (\Throwable $t) {
+        } catch (Throwable $t) {
             dump($t);
 
             return Command::FAILURE;

@@ -11,6 +11,7 @@ use Broadway\EventStore\Management\Criteria;
 use Broadway\EventStore\Management\EventStoreManagement;
 use SensitiveUser\User\Domain\Aggregate\UserId;
 
+// TODO include Replayer in broadway-sensitive-serializer
 class UserReplayer implements EventVisitor
 {
     /**

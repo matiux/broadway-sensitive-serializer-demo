@@ -21,6 +21,7 @@ broadway_sensitive_serializer:
       SensitiveUser\User\Domain\Event\UserRegistered:
         - email
         - surname
+        - user_info
       SensitiveUser\User\Domain\Event\AddressAdded:
         - address
 

@@ -13,10 +13,6 @@ services:
   SensitiveUser\User\Application\Service\ForgetUser:
     arguments:
       $aggregateKeyManager: "@broadway_sensitive_serializer.aggregate_key_manager"
-      
-  SensitiveUser\User\Application\Service\UserReplayer:
-    arguments:
-      $eventStore: "@broadway.event_store.dbal"
 
   SensitiveUser\User\Application\Service\RegisterUserTransactional:
     arguments:

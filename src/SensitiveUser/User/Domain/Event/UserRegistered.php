@@ -10,6 +10,7 @@ use SensitiveUser\Shared\Domain\ValueObject\DateTimeRFC;
 use SensitiveUser\User\Domain\Aggregate\UserId;
 use SensitiveUser\User\Domain\Exception\InvalidUserException;
 use SensitiveUser\User\Domain\ValueObject\Email;
+use SensitiveUser\User\Domain\ValueObject\UserInfo;
 
 /**
  * @extends BasicEvent<UserId>
@@ -22,6 +23,7 @@ class UserRegistered extends BasicEvent
         public readonly string $name,
         public readonly string $surname,
         public readonly Email $email,
+        public readonly UserInfo $userInfo,
         DateTimeRFC $occurredAt,
     ) {
         parent::__construct($userId, $occurredAt);
@@ -33,6 +35,11 @@ class UserRegistered extends BasicEvent
             'name' => $this->name,
             'surname' => $this->surname,
             'email' => (string) $this->email,
+            'user_info' => [
+                'age' => $this->userInfo->age,
+                'height' => $this->userInfo->height,
+                'characteristics' => $this->userInfo->characteristics,
+            ],
         ];
 
         return $this->basicSerialize() + $serialized;
@@ -52,6 +59,11 @@ class UserRegistered extends BasicEvent
             (string) $data['name'],
             (string) $data['surname'],
             Email::crea((string) $data['email']),
+            UserInfo::crea(
+                (int) $data['user_info']['age'],
+                (float) $data['user_info']['height'],
+                $data['user_info']['characteristics'],
+            ),
             self::createOccurredAt((string) $data['occurred_at'])
         );
     }

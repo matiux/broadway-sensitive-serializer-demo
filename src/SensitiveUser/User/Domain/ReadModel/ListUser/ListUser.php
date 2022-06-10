@@ -12,15 +12,18 @@ class ListUser implements Identifiable
 {
     private null|string $address = null;
 
-    public function __construct(
+    private function __construct(
         private readonly UserId $userId,
-        public readonly Email $email
+        public readonly Email $email,
+        public readonly int $age,
+        public readonly float $height,
+        public readonly array $characteristics,
     ) {
     }
 
-    public static function create(UserId $userId, Email $email): self
+    public static function create(UserId $userId, Email $email, int $age, float $height, array $characteristics): self
     {
-        return new self($userId, $email);
+        return new self($userId, $email, $age, $height, $characteristics);
     }
 
     public function editAddress(string $address): void
