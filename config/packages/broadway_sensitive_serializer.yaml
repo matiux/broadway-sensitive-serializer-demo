@@ -16,6 +16,7 @@ broadway_sensitive_serializer:
   strategy:
     name: partial
     aggregate_key_auto_creation: true
+    value_serializer: json # Strategy to serialize payload's values. Default json
     events:
       SensitiveUser\User\Domain\Event\UserRegistered:
         - email
