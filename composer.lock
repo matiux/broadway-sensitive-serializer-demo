@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c3c9d500bee09557cd690176d099e30",
+    "content-hash": "a9cb7589a92528d3441e87c20eed40c8",
     "packages": [
         {
             "name": "adbario/php-dot-notation",
@@ -2077,16 +2077,16 @@
         },
         {
             "name": "matiux/broadway-sensitive-serializer-bundle",
-            "version": "dev-feature/handle_value_serializer_option",
+            "version": "v0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matiux/broadway-sensitive-serializer-bundle.git",
-                "reference": "2770530c08d22bc96f278886d3afac0bfddabb85"
+                "reference": "e82e0b185299abc14846685716333f2e2e8fa0ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/matiux/broadway-sensitive-serializer-bundle/zipball/2770530c08d22bc96f278886d3afac0bfddabb85",
-                "reference": "2770530c08d22bc96f278886d3afac0bfddabb85",
+                "url": "https://api.github.com/repos/matiux/broadway-sensitive-serializer-bundle/zipball/e82e0b185299abc14846685716333f2e2e8fa0ad",
+                "reference": "e82e0b185299abc14846685716333f2e2e8fa0ad",
                 "shasum": ""
             },
             "require": {
@@ -2144,9 +2144,9 @@
             ],
             "support": {
                 "issues": "https://github.com/matiux/broadway-sensitive-serializer-bundle/issues",
-                "source": "https://github.com/matiux/broadway-sensitive-serializer-bundle/tree/feature/handle_value_serializer_option"
+                "source": "https://github.com/matiux/broadway-sensitive-serializer-bundle/tree/v0.3.0"
             },
-            "time": "2022-06-15T17:48:02+00:00"
+            "time": "2022-06-15T20:00:45+00:00"
         },
         {
             "name": "matiux/broadway-sensitive-serializer-dbal",
@@ -7047,9 +7047,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "matiux/broadway-sensitive-serializer-bundle": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
