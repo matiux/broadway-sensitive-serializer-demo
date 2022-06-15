@@ -8,6 +8,7 @@ use SensitiveUser\Shared\Domain\ValueObject\DateTimeRFC;
 use SensitiveUser\User\Application\Command\RegisterUserCommand;
 use SensitiveUser\User\Application\CommandHandler\UserCommandHandler;
 use SensitiveUser\User\Domain\Aggregate\UserId;
+use SensitiveUser\User\Domain\ReadModel\ListUser\ListUsers;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -23,7 +24,8 @@ class RegisterUserConsoleCommand extends Command
     private InputInterface $input;
 
     public function __construct(
-        private UserCommandHandler $userCommandHandler
+        private UserCommandHandler $userCommandHandler,
+        private ListUsers $listUsers,
     ) {
         parent::__construct();
     }
@@ -38,7 +40,7 @@ class RegisterUserConsoleCommand extends Command
                 new InputArgument('email', InputArgument::REQUIRED, 'User email'),
                 new InputArgument('age', InputArgument::OPTIONAL, 'User age', 36),
                 new InputArgument('height', InputArgument::OPTIONAL, 'User height', 1.75),
-                new InputArgument('characteristics', InputArgument::OPTIONAL, 'User characteristics', ['blond']),
+                new InputArgument('characteristics', InputArgument::OPTIONAL, 'User characteristics', ['blond', 'skinny']),
             ]);
     }
 
@@ -59,10 +61,10 @@ class RegisterUserConsoleCommand extends Command
         $height = $input->getArgument('height');
         $characteristics = $input->getArgument('characteristics');
 
-        $userId = (string) UserId::create();
+        $userId = UserId::create();
 
         $command = new RegisterUserCommand(
-            $userId,
+            (string) $userId,
             $name,
             $surname,
             $email,
@@ -75,7 +77,9 @@ class RegisterUserConsoleCommand extends Command
         try {
             $this->userCommandHandler->handle($command);
 
-            $this->output->write(json_encode(['user_id' => $userId]));
+            $listUser = $this->listUsers->byId($userId);
+
+            $this->output->write(json_encode($listUser->serialize()));
 
             return Command::SUCCESS;
         } catch (Throwable $t) {
