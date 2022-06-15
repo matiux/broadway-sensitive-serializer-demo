@@ -14,7 +14,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.10",
         "matiux/broadway-sensitive-serializer-bundle": "dev-feature/handle_value_serializer_option",
-        "matiux/broadway-sensitive-serializer-dbal": "^0.2",
+        "matiux/broadway-sensitive-serializer-dbal": "^0.3.0",
         "matiux/ddd-starter-pack": "^3.0",
         "symfony/console": "6.1.*",
         "symfony/dotenv": "6.1.*",
