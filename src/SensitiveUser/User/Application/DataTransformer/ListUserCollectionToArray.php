@@ -20,10 +20,7 @@ class ListUserCollectionToArray extends BasicCollectionDataTransformer
         $collection = $this->items;
 
         foreach ($collection as $listUser) {
-            $listUsers[] = [
-                'id' => $listUser->getId(),
-                'email' => (string) $listUser->email,
-            ];
+            $listUsers[] = $listUser->serialize();
         }
 
         return $listUsers;
