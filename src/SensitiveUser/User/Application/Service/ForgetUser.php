@@ -40,7 +40,7 @@ class ForgetUser implements ApplicationService
 
         $this->aggregateKeyManager->forget(UuidV4::fromString((string) $userId));
 
-        $this->userReplayer->replayForAggregate((string) $userId);
+        $this->userReplayer->replayForUser($userId);
     }
 
     /**
