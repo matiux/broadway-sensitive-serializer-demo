@@ -11,6 +11,7 @@ use SensitiveUser\User\Domain\Aggregate\UserId;
 use SensitiveUser\User\Domain\Exception\InvalidUserException;
 use SensitiveUser\User\Domain\ValueObject\Email;
 use SensitiveUser\User\Domain\ValueObject\UserInfo;
+use Webmozart\Assert\Assert;
 
 /**
  * @extends BasicEvent<UserId>
@@ -46,6 +47,8 @@ class UserRegistered extends BasicEvent
     }
 
     /**
+     * @psalm-suppress MixedArgument
+     *
      * @param array $data
      *
      * @throws InvalidUserException
@@ -54,6 +57,8 @@ class UserRegistered extends BasicEvent
      */
     public static function deserialize(array $data): UserRegistered
     {
+        Assert::isArray($data['user_info']);
+
         return new self(
             UserId::createFrom((string) $data[self::AGGREGATE_ID_KEY]),
             (string) $data['name'],

@@ -21,7 +21,7 @@ class UserInfo
      * @param float        $height
      * @param list<string> $characteristics
      *
-     * @return static
+     * @return self
      */
     public static function crea(int $age, float $height, array $characteristics): self
     {

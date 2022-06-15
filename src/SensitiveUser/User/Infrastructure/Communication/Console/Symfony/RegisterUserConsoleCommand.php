@@ -57,8 +57,9 @@ class RegisterUserConsoleCommand extends Command
         $name = $input->getArgument('name');
         $surname = $input->getArgument('surname');
         $email = $input->getArgument('email');
-        $age = $input->getArgument('age');
-        $height = $input->getArgument('height');
+        $age = (int) $input->getArgument('age');
+        $height = (float) $input->getArgument('height');
+        /** @var list<string> $characteristics */
         $characteristics = $input->getArgument('characteristics');
 
         $userId = UserId::create();
@@ -79,6 +80,7 @@ class RegisterUserConsoleCommand extends Command
 
             $listUser = $this->listUsers->byId($userId);
 
+            /** @psalm-suppress PossiblyNullReference */
             $this->output->write(json_encode($listUser->serialize()));
 
             return Command::SUCCESS;

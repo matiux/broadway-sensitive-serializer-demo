@@ -6,6 +6,16 @@ namespace SensitiveUser\User\Application\Command;
 
 class RegisterUserCommand
 {
+    /**
+     * @param string       $userId
+     * @param string       $name
+     * @param string       $surname
+     * @param string       $email
+     * @param int          $age
+     * @param float        $height
+     * @param list<string> $characteristics
+     * @param string       $registrationDate
+     */
     public function __construct(
         public readonly string $userId,
         public readonly string $name,
