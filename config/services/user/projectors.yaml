@@ -8,3 +8,8 @@ services:
     resource: '%kernel.project_dir%/src/SensitiveUser/User/Application/Projector/*'
     tags:
       - { name: broadway.domain.event_listener }
+
+  SensitiveUser\User\Application\Projector\UserReplayer:
+    arguments:
+      - '@broadway.event_store.dbal'
+      - !tagged_iterator broadway.domain.event_listener

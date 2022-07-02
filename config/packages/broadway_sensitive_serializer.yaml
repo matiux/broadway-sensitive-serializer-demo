@@ -20,6 +20,8 @@ broadway_sensitive_serializer:
     excluded_id_key: id
     excluded_keys:
       - occurred_at
+      - user_info.height
+      - name
     events:
       - SensitiveUser\User\Domain\Event\AddressAdded
       - SensitiveUser\User\Domain\Event\UserRegistered

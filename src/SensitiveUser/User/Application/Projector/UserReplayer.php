@@ -2,33 +2,39 @@
 
 declare(strict_types=1);
 
-namespace SensitiveUser\User\Application\Service;
+namespace SensitiveUser\User\Application\Projector;
 
 use Broadway\Domain\DomainMessage;
+use Broadway\EventHandling\EventListener;
 use Broadway\EventStore\EventVisitor;
 use Broadway\EventStore\Management\Criteria;
 use Broadway\EventStore\Management\EventStoreManagement;
-use SensitiveUser\User\Application\Projector\ListUserProjector;
+use SensitiveUser\User\Domain\Aggregate\UserId;
 
 // TODO include Replayer in broadway-sensitive-serializer
 class UserReplayer implements EventVisitor
 {
-    // TODO Provide support for a collection of listeners
+    /**
+     * @param EventStoreManagement $eventStore
+     * @param EventListener[]      $eventListeners
+     */
     public function __construct(
         private EventStoreManagement $eventStore,
-        private ListUserProjector $eventListener
+        private iterable $eventListeners,
     ) {
     }
 
     public function doWithEvent(DomainMessage $domainMessage): void
     {
-        $this->eventListener->handle($domainMessage);
+        foreach ($this->eventListeners as $eventListener) {
+            $eventListener->handle($domainMessage);
+        }
     }
 
-    public function replayForAggregate(string $aggregateId): void
+    public function replayForUser(UserId $userId): void
     {
         $criteria = new Criteria();
-        $criteria = $criteria->withAggregateRootIds([$aggregateId]);
+        $criteria = $criteria->withAggregateRootIds([$userId->id()]);
 
         $this->eventStore->visitEvents($criteria, $this);
     }

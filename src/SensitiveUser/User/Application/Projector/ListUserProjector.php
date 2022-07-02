@@ -23,7 +23,12 @@ class ListUserProjector extends Projector
     {
         $listUser = ListUser::create(
             $event->aggregateId,
-            $event->email
+            $event->name,
+            $event->surname,
+            $event->email,
+            $event->userInfo->age,
+            $event->userInfo->height,
+            $event->userInfo->characteristics
         );
 
         $this->listUsers->add($listUser);

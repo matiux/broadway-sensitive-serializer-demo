@@ -51,6 +51,10 @@ act -P ubuntu-latest=shivammathur/node:latest --job static-analysis
 ```
 ./dc exec php bin/console sense:user:forget <<user-id>>
 ```
+### Replay user events
+```
+./dc exec php bin/console sense:user:replay <<user-id>>
+```
 
 ### Documentation
 

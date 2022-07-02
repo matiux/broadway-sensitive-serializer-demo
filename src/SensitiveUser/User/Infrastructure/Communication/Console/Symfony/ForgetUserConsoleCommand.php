@@ -10,6 +10,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Throwable;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
@@ -52,7 +53,7 @@ class ForgetUserConsoleCommand extends Command
             $this->userCommandHandler->handle($command);
 
             return Command::SUCCESS;
-        } catch (\Throwable $t) {
+        } catch (Throwable $t) {
             dump($t);
 
             return Command::FAILURE;
