@@ -32,6 +32,7 @@ schema_drop() {
 database_create() {
   php bin/console \
     doctrine:database:create \
+    --if-not-exists \
     --no-interaction \
     --env="${APP_RUNTIME_ENV}"
 }
@@ -39,6 +40,7 @@ database_create() {
 setup() {
   install_dependencies
   database_create
+  schema_drop
   migrate
 }
 

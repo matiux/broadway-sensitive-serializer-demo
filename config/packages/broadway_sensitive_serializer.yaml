@@ -16,6 +16,7 @@ broadway_sensitive_serializer:
   strategy:
     name: whole
     aggregate_key_auto_creation: true
+    value_serializer: json
     excluded_id_key: id
     excluded_keys:
       - occurred_at
