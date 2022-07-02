@@ -4,7 +4,7 @@ Broadway Sensitive Serializer Demo
 ![check dependencies](https://github.com/matiux/broadway-sensitive-serializer-demo/actions/workflows/check-dependencies.yml/badge.svg)
 [![type coverage](https://shepherd.dev/github/matiux/broadway-sensitive-serializer-demo/coverage.svg)](https://shepherd.dev/github/matiux/broadway-sensitive-serializer-demo)
 [![psalm level](https://shepherd.dev/github/matiux/broadway-sensitive-serializer-demo/level.svg)](https://shepherd.dev/github/matiux/broadway-sensitive-serializer-demo)
-![security analysis status](https://github.com/matiux/broadway-sensitive-serializer-demo/actions/workflows/security-analysis.yml/badge.svg)
+![security analysis status](https://github.com/matiux/broadway-sensitive-serializer-demo/actions/workflows/taint-analysis.yml/badge.svg)
 ![coding standards status](https://github.com/matiux/broadway-sensitive-serializer-demo/actions/workflows/coding-standards.yml/badge.svg)
 ![PHP Version Support](https://img.shields.io/badge/php-%5E8.1-blue)
 

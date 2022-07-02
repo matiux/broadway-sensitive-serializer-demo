@@ -118,7 +118,7 @@ while :; do
     psalm "$@"
     exit $?
     ;;
-  security-analysis)
+  taint-analysis)
     psalm --taint-analysis
     exit $?
     ;;

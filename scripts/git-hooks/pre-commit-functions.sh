@@ -37,7 +37,7 @@ check_code_style() {
 check_psalm() {
 
   # Analisi statica del codice con Psalm
-  ./dc psalm-no-pseudo-tty --no-cache
+  ./dc psalm --no-cache
   STATUS=$?
 
   if [[ "$STATUS" -eq 0 ]]; then
@@ -51,6 +51,30 @@ check_psalm() {
     [Yy]*)
       echo ""
       echo "Please consider fixing psalm errors"
+      return 0
+      ;;
+    [Nn]*) return 1 ;; # No commit
+    *) echo "Please answer y or n." ;;
+    esac
+  done
+}
+
+check_psalm_taint_analysis() {
+  # Analisi statica del codice con Psalm
+  ./dc security-analysis
+  STATUS=$?
+
+  if [[ "$STATUS" -eq 0 ]]; then
+    echo -e "\e[42mPHP Taint analysis Analysis is OK\e[m"
+    return 0 # true
+  fi
+
+  while true; do
+    read -p $'\e[31mDo you really want to commit ignoring taint analysis errors? y/n \e[0m: ' yn </dev/tty
+    case $yn in
+    [Yy]*)
+      echo ""
+      echo "Please consider fixing taint analysis errors"
       return 0
       ;;
     [Nn]*) return 1 ;; # No commit

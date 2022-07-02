@@ -10,8 +10,8 @@ on:
       - partial_strategy
 
 jobs:
-  security-analysis:
-    name: "security analysis"
+  taint-analysis:
+    name: "Security taint analysis"
     runs-on: "ubuntu-latest"
     steps:
       - name: "checkout"
@@ -28,5 +28,5 @@ jobs:
       - name: Install dependencies
         run: ./tools/bin/project install_dependencies
 
-      - name: "running security analysis ( psalm )"
-        run: ./tools/bin/project security-analysis
+      - name: "running security taint analysis (psalm)"
+        run: ./tools/bin/project taint-analysis
