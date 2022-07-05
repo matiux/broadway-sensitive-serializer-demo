@@ -13,21 +13,14 @@ use SensitiveUser\User\Domain\Event\AddressAdded;
 class AddressAddedSensitizer extends PayloadSensitizer
 {
     /**
-     * {@inheritDoc}
-     *
      * @throws AssertionFailedException
      */
-    protected function generateSensitizedPayload(string $decryptedAggregateKey): array
+    protected function generateSensitizedPayload(): array
     {
         $this->validatePayload($this->getPayload());
 
-        $email = $this->getSensitiveDataManager()->encrypt(
-            sensitiveData: (string) $this->getPayload()['address'],
-            secretKey: $decryptedAggregateKey
-        );
-
         $payload = $this->getPayload();
-        $payload['address'] = $email;
+        $payload['address'] = $this->encryptValue((string) $this->getPayload()['address']);
 
         return $payload;
     }
@@ -35,17 +28,12 @@ class AddressAddedSensitizer extends PayloadSensitizer
     /**
      * @throws AssertionFailedException
      */
-    protected function generateDesensitizedPayload(string $decryptedAggregateKey): array
+    protected function generateDesensitizedPayload(): array
     {
         $this->validatePayload($this->getPayload());
 
-        $email = $this->getSensitiveDataManager()->decrypt(
-            encryptedSensitiveData: (string) $this->getPayload()['address'],
-            secretKey: $decryptedAggregateKey
-        );
-
         $payload = $this->getPayload();
-        $payload['address'] = $email;
+        $payload['address'] = $this->decryptValue((string) $this->getPayload()['address']);
 
         return $payload;
     }

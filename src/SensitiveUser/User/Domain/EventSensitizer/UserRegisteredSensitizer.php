@@ -13,21 +13,14 @@ use SensitiveUser\User\Domain\Event\UserRegistered;
 class UserRegisteredSensitizer extends PayloadSensitizer
 {
     /**
-     * {@inheritDoc}
-     *
      * @throws AssertionFailedException
      */
-    protected function generateSensitizedPayload(string $decryptedAggregateKey): array
+    protected function generateSensitizedPayload(): array
     {
         $this->validatePayload($this->getPayload());
 
-        $email = $this->getSensitiveDataManager()->encrypt(
-            sensitiveData: (string) $this->getPayload()['email'],
-            secretKey: $decryptedAggregateKey
-        );
-
         $payload = $this->getPayload();
-        $payload['email'] = $email;
+        $payload['email'] = $this->encryptValue((string) $this->getPayload()['email']);
 
         return $payload;
     }
@@ -51,17 +44,12 @@ class UserRegisteredSensitizer extends PayloadSensitizer
     /**
      * @throws AssertionFailedException
      */
-    protected function generateDesensitizedPayload(string $decryptedAggregateKey): array
+    protected function generateDesensitizedPayload(): array
     {
         $this->validatePayload($this->getPayload());
 
-        $email = $this->getSensitiveDataManager()->decrypt(
-            encryptedSensitiveData: (string) $this->getPayload()['email'],
-            secretKey: $decryptedAggregateKey
-        );
-
         $payload = $this->getPayload();
-        $payload['email'] = $email;
+        $payload['email'] = $this->decryptValue((string) $this->getPayload()['email']);
 
         return $payload;
     }
