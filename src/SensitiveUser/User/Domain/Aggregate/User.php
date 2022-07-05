@@ -9,6 +9,7 @@ use SensitiveUser\Shared\Domain\ValueObject\DateTimeRFC;
 use SensitiveUser\User\Domain\Event\AddressAdded;
 use SensitiveUser\User\Domain\Event\UserRegistered;
 use SensitiveUser\User\Domain\ValueObject\Email;
+use SensitiveUser\User\Domain\ValueObject\UserInfo;
 
 class User extends EventSourcedAggregateRoot
 {
@@ -16,6 +17,7 @@ class User extends EventSourcedAggregateRoot
     private string $name;
     private string $surname;
     private Email $email;
+    private UserInfo $userInfo;
     private string $address;
 
     public static function create(
@@ -23,10 +25,11 @@ class User extends EventSourcedAggregateRoot
         string $name,
         string $surname,
         Email $email,
-        DateTimeRFC $registrationDate
+        UserInfo $userInfo,
+        DateTimeRFC $registrationDate,
     ): self {
         $user = new self();
-        $user->apply(new UserRegistered($userId, $name, $surname, $email, $registrationDate));
+        $user->apply(new UserRegistered($userId, $name, $surname, $email, $userInfo, $registrationDate));
 
         return $user;
     }
@@ -37,6 +40,7 @@ class User extends EventSourcedAggregateRoot
         $this->name = $event->name;
         $this->surname = $event->surname;
         $this->email = $event->email;
+        $this->userInfo = $event->userInfo;
     }
 
     public function addAddress(string $address, DateTimeRFC $occurredAt): void

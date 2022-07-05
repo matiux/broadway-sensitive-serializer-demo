@@ -5,7 +5,12 @@
 
     <entity name="SensitiveUser\User\Domain\ReadModel\ListUser\ListUser" table="`list_users`">
         <id name="userId" type="UserId" column="user_id"/>
+        <field name="name" type="string" column="name" nullable="true"/>
+        <field name="surname" type="string" column="surname" nullable="true"/>
         <field name="email" type="Email" column="email" nullable="false"/>
         <field name="address" type="string" column="address" nullable="true"/>
+        <field name="age" type="integer" column="age" nullable="true"/>
+        <field name="height" type="float" column="height" nullable="true"/>
+        <field name="characteristics" type="simple_array" column="characteristics" nullable="true"/>
     </entity>
 </doctrine-mapping>

@@ -10,6 +10,9 @@ use InvalidArgumentException;
 use Matiux\Broadway\SensitiveSerializer\Serializer\Strategy\PayloadSensitizer;
 use SensitiveUser\User\Domain\Event\AddressAdded;
 
+/**
+ * @psalm-suppress PossiblyInvalidCast
+ */
 class AddressAddedSensitizer extends PayloadSensitizer
 {
     /**

@@ -8,6 +8,7 @@ use DDDStarterPack\Service\Application\ApplicationService;
 use Matiux\Broadway\SensitiveSerializer\DataManager\Domain\Exception\AggregateKeyNotFoundException;
 use Matiux\Broadway\SensitiveSerializer\DataManager\Domain\Service\AggregateKeyManager;
 use Ramsey\Uuid\Rfc4122\UuidV4;
+use SensitiveUser\User\Application\Projector\UserReplayer;
 use SensitiveUser\User\Domain\Aggregate\UserId;
 use SensitiveUser\User\Domain\Exception\InvalidUserException;
 use SensitiveUser\User\Domain\ReadModel\ListUser\ListUser;
@@ -39,7 +40,7 @@ class ForgetUser implements ApplicationService
 
         $this->aggregateKeyManager->forget(UuidV4::fromString((string) $userId));
 
-        $this->userReplayer->replayForAggregate((string) $userId);
+        $this->userReplayer->replayForUser($userId);
     }
 
     /**

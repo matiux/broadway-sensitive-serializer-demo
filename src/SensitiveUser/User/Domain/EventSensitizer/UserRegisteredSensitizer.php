@@ -10,6 +10,9 @@ use Broadway\Serializer\Serializable;
 use Matiux\Broadway\SensitiveSerializer\Serializer\Strategy\PayloadSensitizer;
 use SensitiveUser\User\Domain\Event\UserRegistered;
 
+/**
+ * @psalm-suppress PossiblyInvalidCast
+ */
 class UserRegisteredSensitizer extends PayloadSensitizer
 {
     /**
