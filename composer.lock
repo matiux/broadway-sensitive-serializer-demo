@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a9cb7589a92528d3441e87c20eed40c8",
+    "content-hash": "d0b7663755e754cc2c3e631da6f35673",
     "packages": [
         {
             "name": "adbario/php-dot-notation",
@@ -5929,6 +5929,38 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
+            "name": "matiux/php-project-autopilot",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matiux/php-project-autopilot.git",
+                "reference": "9cbb122be725cb72d3290f7c5291af39bea2accb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matiux/php-project-autopilot/zipball/9cbb122be725cb72d3290f7c5291af39bea2accb",
+                "reference": "9cbb122be725cb72d3290f7c5291af39bea2accb",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matteo Galacci",
+                    "email": "m.galacci@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/matiux/php-project-autopilot/issues",
+                "source": "https://github.com/matiux/php-project-autopilot/tree/master"
+            },
+            "time": "2022-09-20T21:52:22+00:00"
+        },
+        {
             "name": "mockery/mockery",
             "version": "1.5.0",
             "source": {
@@ -7047,7 +7079,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "matiux/php-project-autopilot": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
@@ -7056,5 +7090,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

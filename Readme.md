@@ -23,8 +23,9 @@ You can switch between three branch:
 git clone https://github.com/matiux/broadway-sensitive-serializer-demo.git && cd sensitive-serializer-demo
 cp docker/docker-compose.override.dist.yml docker/docker-compose.override.yml
 rm -rf .git/hooks && ln -s ../scripts/git-hooks .git/hooks
-./dc up -d
-./dc project setup
+make build-php ARG="--no-cache"
+make upd
+make project ARG="setup"
 ```
 
 This repository uses GitHub actions to perform some checks. If you want to test the actions locally you can use [act](https://github.com/nektos/act).
@@ -33,33 +34,41 @@ For example if you want to check the action for static analysis
 act -P ubuntu-latest=shivammathur/node:latest --job static-analysis
 ```
 
-### Create User
-```
-./dc exec php bin/console sense:user:register <<name>> <<surname>> <<email>> | jq
-```
-### Add address to User
-```
-./dc exec php bin/console sense:user:add-address <<user-id>> <<address>>
+## Run application
+
+```bash
+make build-php ARG="--no-cache"
+make upd
+make enter
 ```
 
-### Show user list
+#### Create User
 ```
-./dc exec php bin/console sense:user:show-list | jq
+php bin/console sense:user:register <<name>> <<surname>> <<email>> | jq
+```
+#### Add address to User
+```
+php bin/console sense:user:add-address <<user-id>> "<<address>>"
 ```
 
-### Forget user
+#### Show user list
 ```
-./dc exec php bin/console sense:user:forget <<user-id>>
+php bin/console sense:user:show-list | jq
 ```
 
-### Replay user events
+#### Forget user
 ```
-./dc exec php bin/console sense:user:replay <<user-id>>
+php bin/console sense:user:forget <<user-id>>
+```
+
+#### Replay user events
+```
+php bin/console sense:user:replay <<user-id>>
 ```
 
 ### Documentation
 
 * [Demo wiki](https://github.com/matiux/broadway-sensitive-serializer-demo/wiki)
-* [Library wiki](https://github.com/matiux/broadway-sensitive-serializer/wiki)
+* [Broadway sensitive serializer wiki](https://broadway-sensitive-serializer.readthedocs.io/en/latest/)
 * [Bundle wiki](https://github.com/matiux/broadway-sensitive-serializer-bundle/blob/master/README.md)
 * [DBAL AggregateKeys repository wiki](https://github.com/matiux/broadway-sensitive-serializer-dbal/blob/master/README.md)

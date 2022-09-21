@@ -1,23 +1,24 @@
-version: '3.8'
+version: '3.9'
 
 volumes:
-  app_database: {}
+  broadway-sensitive-serializer-demo-database-volume: {}
 
 networks:
-  broadway_sensitive_serializer_network:
-    name: broadway_sensitive_serializer_network
+  broadway-sensitive-serializer-demo-network:
+    name: broadway-sensitive-serializer-demo-network
     driver: bridge
 
 services:
 
-  php_broadway_sensitive_serializer_demo:
+  broadway-sensitive-serializer-demo-php:
+    image: broadway-sensitive-serializer-demo-php
     build: php
     hostname: sensitive_serializer_demo
     volumes:
       - ../:/var/www/app:delegated
       - ./data/shell_history:/home/utente/shell_history
     networks:
-      - broadway_sensitive_serializer_network
+      - broadway-sensitive-serializer-demo-network
     environment:
       - HISTFILE=/home/utente/shell_history/.x_history
     secrets:
@@ -28,22 +29,23 @@ services:
       - source: known_hosts
         target: /home/utente/.ssh/known_hosts
 
-  nodejs:
+  broadway-sensitive-serializer-demo-nodejs:
+    image: broadway-sensitive-serializer-demo-nodejs
     build: nodejs
     working_dir: /var/www/app
     volumes:
       - ../:/var/www/app
     networks:
-      - broadway_sensitive_serializer_network
+      - broadway-sensitive-serializer-demo-network
 
-  servicedb:
+  broadway-sensitive-serializer-demo-db:
     image: mariadb:10.3.22
     volumes:
-      - app_database:/var/lib/mysql
+      - broadway-sensitive-serializer-demo-database-volume:/var/lib/mysql
       - ./mysql/custom.cnf:/etc/mysql/conf.d/custom.cnf
       - ./data/db:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=serializer_demo_db
     networks:
-      - broadway_sensitive_serializer_network
+      - broadway-sensitive-serializer-demo-network
