@@ -36,4 +36,7 @@ jobs:
             ${{ runner.os }}-php-
 
       - name: Install dependencies
-        run: ./tools/bin/project install_dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Check dependency vulnerabilities
+        run: ./tools/bin/project/project check-deps-vulnerabilities
